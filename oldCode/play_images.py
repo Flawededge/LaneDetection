@@ -17,13 +17,13 @@ import os
 import re
 import matplotlib.pyplot as plt
 from datetime import datetime as dt
-from image import load_image
-from camera_model import CameraModel
+from oldCode.image import load_image
+from oldCode.camera_model import CameraModel
 
-parser = argparse.ArgumentParser(description='Play back images from a given directory')
+parser = argparse.ArgumentParser(description='Play back images from a given args.dir')
 
-parser.add_argument('dir', type=str, help='Directory containing images.')
-parser.add_argument('--models_dir', type=str, default=None, help='(optional) Directory containing camera model. If supplied, images will be undistorted before display')
+parser.add_argument('dir', type=str, help='args.dir containing images.')
+parser.add_argument('--models_dir', type=str, default=None, help='(optional) args.dir containing camera model. If supplied, images will be undistorted before display')
 parser.add_argument('--scale', type=float, default=1.0, help='(optional) factor by which to scale images before display')
 
 args = parser.parse_args()
@@ -32,9 +32,9 @@ camera = re.search('(stereo|mono_(left|right|rear))', args.dir).group(0)
 
 timestamps_path = os.path.join(os.path.join(args.dir, os.pardir, camera + '.timestamps'))
 if not os.path.isfile(timestamps_path):
-  timestamps_path = os.path.join(args.dir, os.pardir, os.pardir, camera + '.timestamps')
-  if not os.path.isfile(timestamps_path):
-      raise IOError("Could not find timestamps file")
+    timestamps_path = os.path.join(args.dir, os.pardir, os.pardir, camera + '.timestamps')
+    if not os.path.isfile(timestamps_path):
+        raise IOError("Could not find timestamps file")
 
 model = None
 if args.models_dir:

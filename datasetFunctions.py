@@ -6,38 +6,30 @@
 # #
 
 import re
-from PIL import Image
+import cv2 as cv
+import csv
 from colour_demosaicing import demosaicing_CFA_Bayer_bilinear as demosaic
 
 BAYER_STEREO = 'gbrg'
 BAYER_MONO = 'rggb'
 
 
-def load_image(image_path, model=None):
-    """ Loads and rectifies an image from file.
-    :param image_path: Full or relative path to the image
-    :type image_path: String
-    :param model: [Optional] Path to camera model to undistort image
-    Args:
-
-        model (camera_model.CameraModel): if supplied, model will be used to undistort image.
-
-    Returns:
-        numpy.ndarray: demosaiced and optionally undistorted image
-
+def load_stereo(paths, model_path):
     """
-    if model:
-        camera = model.camera
-    else:
-        camera = re.search('(stereo|mono_(left|right|rear))', image_path).group(0)
-    if camera == 'stereo':
-        pattern = BAYER_STEREO
-    else:
-        pattern = BAYER_MONO
+    :param paths: left, centre then right image directories
+    :type paths: List of Strings
+    :param model_path: Path to camera model to undistort image
+    :type model_path: String
+    :returns cv2 image list
+    """
+    models = ["stereo_wide_left.txt", "stereo_wide_left.txt", "stereo_wide_right.txt"]
+    img = []
+    for img, curModel in zip(paths, models):
+        with open(model_path+curModel) as mod:
+            mod = mod.readlines()
 
-    img = Image.open(image_path)
-    img = demosaic(img, pattern)
-    if model:
-        img = model.undistort(img)
+            cur = cv.imread(img)
+            cur = cv.undistort(cur, )
+            img.append(cur)
 
     return img

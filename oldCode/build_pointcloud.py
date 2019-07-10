@@ -15,9 +15,9 @@
 import os
 import re
 import numpy as np
-from transform import build_se3_transform
+from oldCode.transform import build_se3_transform
 
-from interpolate_poses import interpolate_vo_poses, interpolate_ins_poses
+from oldCode.interpolate_poses import interpolate_vo_poses, interpolate_ins_poses
 
 
 def build_pointcloud(lidar_dir, poses_file, extrinsics_dir, start_time, end_time, origin_time=-1):
@@ -108,7 +108,6 @@ def build_pointcloud(lidar_dir, poses_file, extrinsics_dir, start_time, end_time
 if __name__ == "__main__":
     import argparse
     import matplotlib.pyplot as plt
-    from mpl_toolkits.mplot3d import Axes3D
 
     parser = argparse.ArgumentParser(description='Build and display a pointcloud')
     parser.add_argument('--poses_file', type=str, default=None, help='File containing relative or absolute poses')

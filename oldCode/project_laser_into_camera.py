@@ -18,10 +18,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import argparse
 
-from build_pointcloud import build_pointcloud
-from transform import build_se3_transform
-from image import load_image
-from camera_model import CameraModel
+from oldCode.build_pointcloud import build_pointcloud
+from oldCode.transform import build_se3_transform
+from oldCode.image import load_image
+from oldCode.camera_model import CameraModel
 
 parser = argparse.ArgumentParser(description='Project LIDAR data into camera image')
 parser.add_argument('--image_dir', type=str, help='Directory containing images')

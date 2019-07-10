@@ -1,5 +1,5 @@
-numpy
 matplotlib
+pandas
+PyQt5
+numpy
 colour_demosaicing
-pillow
-
