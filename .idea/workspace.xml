@@ -1,176 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a7f6b8b-e509-40c0-91a1-376bfb7f3fce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NuScenes.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build_pointcloud.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldCode/build_pointcloud.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldCode/camera_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasetFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasetFunctions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldCode/image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpolate_poses.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldCode/interpolate_poses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/play_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldCode/play_images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_laser_into_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldCode/project_laser_into_camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/ins.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/ldmrs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/lms_front.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/lms_rear.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/mono_left.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/mono_rear.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/mono_right.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/stereo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/BuildPointcloud.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/InterpolatePoses.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/LoadImage.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/PlayImages.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/ProjectLaserIntoCamera.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/ReadCameraModel.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/RelativeToAbsolutePoses.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/SE3MatrixFromComponents.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/SO3ToQuaternion.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/TimestampToString.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/matlab/UndistortImage.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-06-12-54-54.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-06-13-09-52.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-06-13-14-58.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-06-13-17-51.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-14-13-46-12.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-14-13-50-20.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-14-13-53-47.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-14-13-59-05.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-19-12-51-39.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-19-13-05-38.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-19-13-20-57.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-23-15-14-44.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-23-15-36-04.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-23-15-41-25.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-23-15-46-19.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-24-14-09-07.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-24-14-15-17.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-24-14-20-41.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-24-14-25-41.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-24-14-47-45.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-24-15-03-07.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-25-16-22-15.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-25-16-45-34.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-25-17-02-32.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-26-08-53-56.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-26-09-24-58.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-26-09-31-18.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-06-26-09-53-12.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-07-14-14-49-50.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-07-14-15-16-36.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-07-14-15-42-55.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-08-08-12-53-13.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-08-08-13-01-14.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-08-08-13-08-02.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-08-08-13-15-11.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-08-11-10-22-21.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-08-11-10-49-42.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-08-11-10-59-18.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-11-11-11-06-25.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-11-14-16-34-33.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-11-18-13-20-12.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-11-21-16-07-03.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-11-25-09-18-32.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-11-28-12-07-13.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-02-15-30-08.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-05-11-09-10.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-05-15-42-07.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-09-13-21-02.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-10-18-10-50.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-12-10-45-15.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-16-09-14-09.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-16-18-44-24.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-12-17-18-18-43.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-03-08-45-10.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-03-19-43-11.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-06-13-57-16.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-10-11-58-05.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-13-09-16-26.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-17-14-42-12.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-20-16-34-06.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-24-12-32-19.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-02-27-18-09-02.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-03-03-11-31-36.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-03-10-14-18-10.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-03-13-14-17-00.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-03-17-11-08-44.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-03-24-13-47-33.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-03-27-16-14-21.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-04-17-09-06-25.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-04-21-12-10-38.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-04-24-08-15-07.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-04-28-15-52-02.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-05-08-10-33-09.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-05-15-08-00-49.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-05-19-14-06-38.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-05-22-11-14-30.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-05-26-13-59-22.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-05-29-09-36-29.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-06-05-10-09-25.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-06-09-15-06-29.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-06-12-08-52-55.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-06-23-13-06-07.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-06-26-08-09-43.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-06-30-13-31-45.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-03-15-23-28.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-08-13-37-17.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-10-10-01-59.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-14-16-17-39.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-17-10-12-27.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-21-08-26-57.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-24-14-17-50.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-24-14-36-47.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-07-29-13-09-26.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-04-09-12-27.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-05-14-07-34.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-12-15-04-18.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-13-16-02-58.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-14-14-54-57.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-17-10-26-38.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-17-10-42-18.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-17-13-30-19.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-18-10-05-52.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-18-14-42-51.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-20-12-00-47.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-20-15-47-38.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-21-10-40-24.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-21-16-23-57.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-26-15-23-36.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-27-10-06-57.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-27-16-07-13.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-08-28-09-50-22.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-09-01-21-16-05.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-09-01-21-44-08.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-09-02-10-37-32.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-10-28-14-13-51.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-10-29-10-55-43.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-10-29-12-18-17.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-10-30-11-56-36.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-10-30-13-52-14.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-02-10-45-59.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-02-15-17-19.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-03-14-29-59.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-04-14-06-53.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-05-11-55-40.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-06-11-21-12.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-10-10-32-52.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-10-11-55-47.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-10-14-15-57.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-10-15-10-59.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-11-10-02-34.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-11-14-13-43.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-12-11-22-05.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-12-13-27-51.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2015-11-13-10-28-08.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldCode/transform.py" afterDir="false" />
-    </list>
+    <list default="true" id="8a7f6b8b-e509-40c0-91a1-376bfb7f3fce" name="Default Changelist" comment="" />
+    <ignored path="TestSet/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,51 +14,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="306">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
-                <element signature="e#121#130#0" expanded="true" />
+                <element signature="e#121#145#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/oldCode/build_pointcloud.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="85">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasetFunctions.py">
+        <entry file="file://$PROJECT_DIR$/processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+            <state relative-caret-position="51">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loadImages.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2533">
+              <caret line="154" selection-start-line="154" selection-end-line="154" />
               <folding>
                 <element signature="e#115#124#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_wide_left.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="9" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_wide_right.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -246,6 +73,8 @@
       <find>args.models_dir</find>
       <find>modelsDir</find>
       <find>6682</find>
+      <find>cameraModel</find>
+      <find>shelve</find>
     </findStrings>
     <replaceStrings>
       <replace>#</replace>
@@ -264,18 +93,23 @@
         <option value="$PROJECT_DIR$/RobocarPythonSDK/play_images.py" />
         <option value="$PROJECT_DIR$/gui.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/oldCode/image.py" />
         <option value="$PROJECT_DIR$/play_images.py" />
         <option value="$PROJECT_DIR$/oldCode/play_images.py" />
-        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/oldCode/build_pointcloud.py" />
+        <option value="$PROJECT_DIR$/oldCode/camera_model.py" />
         <option value="$PROJECT_DIR$/datasetFunctions.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/loadImages.py" />
+        <option value="$PROJECT_DIR$/processing.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
+    <option name="x" value="111" />
+    <option name="y" value="-18" />
+    <option name="width" value="1241" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -284,34 +118,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="LaneDetection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaneDetection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaneDetection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaneDetection" type="462c0819:PsiDirectoryNode" />
-              <item name="Dataset" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaneDetection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaneDetection" type="462c0819:PsiDirectoryNode" />
-              <item name="oldCode" type="462c0819:PsiDirectoryNode" />
+              <item name="Python Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Python Code" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RobotCarDataset-Scraper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -383,6 +207,9 @@
       <module name="LaneDetection" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -440,37 +267,95 @@
       <updated>1562456950710</updated>
       <workItem from="1562456965011" duration="13023000" />
       <workItem from="1562651642927" duration="744000" />
-      <workItem from="1562713595970" duration="7750000" />
+      <workItem from="1562713595970" duration="9137000" />
+      <workItem from="1563155981878" duration="12135000" />
+      <workItem from="1563231448188" duration="7658000" />
+      <workItem from="1563241936198" duration="1452000" />
+      <workItem from="1563248520641" duration="1341000" />
+      <workItem from="1564095211893" duration="173000" />
+      <workItem from="1564095428809" duration="108000" />
+      <workItem from="1564095657270" duration="268000" />
     </task>
+    <task id="LOCAL-00001" summary="Made changes to a lot">
+      <created>1562721388251</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1562721388252</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Starting to restructure the storage of the project">
+      <created>1563156957354</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1563156957354</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added in the models dir">
+      <created>1563157035671</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1563157035671</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added in image processing and developing efficient shelving now">
+      <created>1563169060414</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1563169060414</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Processing working and now saving into a process folder">
+      <created>1563248940711</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1563248940711</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Processing working and now saving into a process folder">
+      <created>1564095751044</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1564095751044</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21517000" />
+    <option name="totallyTimeSpent" value="46039000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15991472" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15191898" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.3997833" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.41928494" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989059" weight="0.32827735" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.4989059" visible="true" weight="0.32719395" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010941" side_tool="true" weight="0.32932165" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4989059" weight="0.3261105" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4989059" weight="0.32603937" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32719395" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.32995737" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.7002188" />
       <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="4" side_tool="true" weight="0.14925373" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Coverage" order="6" side_tool="true" weight="0.32995737" />
@@ -479,42 +364,85 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Made changes to a lot" />
+    <MESSAGE value="Starting to restructure the storage of the project" />
+    <MESSAGE value="Added in the models dir" />
+    <MESSAGE value="Added in image processing and developing efficient shelving now" />
+    <MESSAGE value="Processing working and now saving into a process folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Processing working and now saving into a process folder" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/datasetFunctions.py</url>
-          <line>30</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="view[0]" language="Python" />
+        <watch expression="view[1]" language="Python" />
+        <watch expression="cur_view[0]" language="Python" />
+        <watch expression="cur_view[1]" language="Python" />
+        <watch expression="time" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LaneDetection$main.coverage" NAME="main Coverage Results" MODIFIED="1562720090394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$main.coverage" NAME="main Coverage Results" MODIFIED="1563239108175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LaneDetection$play_images__1_.coverage" NAME="play_images (1) Coverage Results" MODIFIED="1562717774939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>cur_view[1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cur_view[0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>time</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>view[1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>view[0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/oldCode/interpolate_poses.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oldCode/project_laser_into_camera.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_rear/._1418381798122299.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="1740" selection-start-line="1740" selection-end-line="1740" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Robocar Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SECOND">
@@ -523,31 +451,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/ins.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/ldmrs.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/mono_left.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-06-13-17-51.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NuScenes.ipynb">
-      <provider selected="true" editor-type-id="jupyter-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oldCode/camera_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/ins.txt" />
+    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/ldmrs.txt" />
+    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/extrinsics/mono_left.txt" />
+    <entry file="file://$PROJECT_DIR$/robotcar-dataset-sdk-2.1.1/tags/2014-05-06-13-17-51.yaml" />
+    <entry file="file://$PROJECT_DIR$/NuScenes.ipynb" />
+    <entry file="file://$PROJECT_DIR$/gui.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -558,166 +467,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/LaneDetection/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="320" selection-start-line="320" selection-end-line="320" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381798122302.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381798395025.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381798667598.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381799940164.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381801212731.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381798122302.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381798395025.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381798667598.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381799940164.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/mono_left/1418381801212731.png" />
     <entry file="file://$PROJECT_DIR$/oldCode/transform.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/LaneDetection/Lib/site-packages/PIL/Image.py">
+    <entry file="file://$PROJECT_DIR$/Dataset/ldmrs.timestamps" />
+    <entry file="file://$PROJECT_DIR$/Dataset/lms_front.timestamps" />
+    <entry file="file://$PROJECT_DIR$/Dataset/mono_left.timestamps" />
+    <entry file="file://$PROJECT_DIR$/Dataset/mono_right.timestamps" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo.timestamps" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381801951289.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381801638827.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381802201274.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381798701591.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381803638542.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381807887855.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381811637402.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381816949096.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_narrow_left.txt" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381802951168.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_narrow_right.txt" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/._1418381798076682.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381798389135.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/left/1418381798076682.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381798076682.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/stereo/right/1418381798076682.png" />
+    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_wide_left.txt" />
+    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_wide_right.txt" />
+    <entry file="file://$PROJECT_DIR$/oldCode/build_pointcloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1473">
-          <caret line="2777" lean-forward="true" selection-start-line="2777" selection-end-line="2777" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/ldmrs.timestamps">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/lms_front.timestamps">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_left.timestamps">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/mono_right.timestamps">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo.timestamps">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oldCode/image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="17">
+          <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
           <folding>
-            <element signature="e#551#560#0" expanded="true" />
+            <element signature="e#552#561#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/LaneDetection/Lib/re.py" />
     <entry file="file://$PROJECT_DIR$/oldCode/play_images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="30" column="27" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="27" />
+        <state relative-caret-position="307">
+          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding>
             <element signature="e#552#567#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381801951289.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381801638827.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381802201274.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381798701591.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381803638542.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381807887855.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381811637402.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381816949096.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_narrow_left.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381802951168.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_narrow_right.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/._1418381798076682.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_wide_right.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/Models/stereo_wide_left.txt">
+    <entry file="file://$PROJECT_DIR$/oldCode/image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="9" />
+        <state relative-caret-position="472">
+          <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+          <folding>
+            <element signature="e#551#560#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasetFunctions.py">
+    <entry file="file://$PROJECT_DIR$/TestSet/stereo/centre/1418381798076682.png" />
+    <entry file="file://$PROJECT_DIR$/TestSet/stereo/centre/1418381798951554.png" />
+    <entry file="file://$USER_HOME$/Anaconda3/envs/LaneDetection/Lib/codecs.py" />
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/LaneDetection/Lib/site-packages/PIL/Image.py" />
+    <entry file="file://$PROJECT_DIR$/oldCode/camera_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2074">
+          <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
+          <folding>
+            <element signature="e#552#561#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loadImages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2533">
+          <caret line="154" selection-start-line="154" selection-end-line="154" />
           <folding>
             <element signature="e#115#124#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381798389135.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/left/1418381798076682.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/centre/1418381798076682.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/stereo/right/1418381798076682.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#121#130#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oldCode/build_pointcloud.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#121#145#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
