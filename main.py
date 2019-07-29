@@ -6,13 +6,14 @@
 """
 
 from pathlib import Path
-from sys import exit
 import loadImages
 import numpy as np
 import cv2 as cv
 import os
 from copy import copy
 from timeit import default_timer as timer  # For benchmarking loading images
+import tkinter
+
 
 # ---------- User Parameters -------------------------------------------------------------------------------------------
 imageDir = "F:/TestSet/"            # The folder to look for images

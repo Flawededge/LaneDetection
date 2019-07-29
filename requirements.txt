@@ -4,3 +4,5 @@ pandas
 PyQt5
 numpy
 colour_demosaicing
+pillow
+PyQt5
