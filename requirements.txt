@@ -1,8 +1,9 @@
 opencv-python
 matplotlib
 pandas
-PyQt5
 numpy
 colour_demosaicing
 pillow
 PyQt5
+pyqt5-tools
+PyQt5-stubs
