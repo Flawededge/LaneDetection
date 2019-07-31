@@ -6,26 +6,95 @@
 """
 
 from pathlib import Path
-import loadImages
+from testCode import loadImages
 import numpy as np
-import cv2 as cv
+import cv2
 import os
-from copy import copy
-from timeit import default_timer as timer  # For benchmarking loading images
-import tkinter
-
+from PyQt5.QtCore import *
+import time
+import traceback, sys
 
 # ---------- User Parameters -------------------------------------------------------------------------------------------
-imageDir = "F:/TestSet/"            # The folder to look for images
-modelDir = "Models/"                # Contains the camera models
+imageDir = "F:/Datasets/2014-05-06-12-54-54/"            # The folder to look for images
+modelDir = f"{imageDir}Models/"                # Contains the camera models
 storeDir = f"{imageDir}processed/"  # Relative dir in which to store processed files
-storeTyp = ".jpg"                   # The image format to store processed images in
 scale = 1.0                         # Factor to scale the images before displaying
 
 display = True  # Whether to display the images using imshow from opencv
 waitTime = 1    # If display, then what is the delay between images (0 to wait for key press)
 
 # ---------- Check dir structure ---------------------------------------------------------------------------------------
+
+
+class WorkerSignals(QObject):
+    """
+    Defines the signals available from a running worker thread.
+
+    Supported signals are:
+
+    finished
+        No data
+
+    error
+        `tuple` (exctype, value, traceback.format_exc() )
+
+    result
+        `object` data returned from processing, anything
+
+    progress
+        `int` indicating % progress
+
+    """
+    finished = pyqtSignal()
+    error = pyqtSignal(tuple)
+    result = pyqtSignal(object)
+    progress = pyqtSignal(int)
+
+class Worker(QRunnable):
+    """
+    Worker thread
+
+    Inherits from QRunnable to handler worker thread setup, signals and wrap-up.
+
+    :param callback: The function callback to run on this worker thread. Supplied args and
+                     kwargs will be passed through to the runner.
+    :type callback: function
+    :param args: Arguments to pass to the callback function
+    :param kwargs: Keywords to pass to the callback function
+
+    """
+
+    def __init__(self, fn, *args, **kwargs):
+        super(Worker, self).__init__()
+
+        # Store constructor arguments (re-used for processing)
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+        self.signals = WorkerSignals()
+
+        # Add the callback to our kwargs
+        # self.kwargs['progress_callback'] = self.signals.progress
+        # self.kwargs['latestResult'] = self.signals.latestResult
+
+    @pyqtSlot()
+    def run(self):
+        """
+        Initialise the runner function with passed args, kwargs.
+        """
+
+        # Retrieve args/kwargs here; and fire processing using them
+        try:
+            result = self.fn(*self.args, **self.kwargs)
+        except:
+            traceback.print_exc()
+            exctype, value = sys.exc_info()[:2]
+            self.signals.error.emit((exctype, value, traceback.format_exc()))
+        else:
+            self.signals.result.emit(result)  # Return the result of the processing
+        finally:
+            self.signals.finished.emit()  # Done
+
 
 # # Get the paths of everything
 views = [[Path(f"{imageDir}stereo/left/"), Path(f"{storeDir}/left")],
@@ -61,40 +130,38 @@ models = [loadImages.CameraModel(modelDir, str(views[0])),
 
 with open(imageDir + "stereo.timestamps") as timestampFile:
     timestamps = timestampFile.readlines()
-    print(f"Now processing {len(timestamps)} images:")
-    for cnt, line in enumerate(timestamps):
-        start = timer()  # Start timer for benchmarking
+    timestamps = [i.split()[0] for i in timestamps]
 
-        time = line.split()[0]  # Get the line
-        print(f"{cnt}| {time} -> ", end='')
 
-        # Load from image and process it
-        print("Disk -> ", end='')
-        # Load the images
-        images = []
-        for view, model in zip(views, models):
-            cur_view = [copy(view[0]).joinpath(time + ".png"), copy(view[1]).joinpath(time + storeTyp)]
-            if cur_view[1].exists():
-                images.append(cv.imread(str(cur_view[1])))
-            else:  # Load the original image with model and convert it to a cv image
-                images.append((loadImages.load_stereo(str(cur_view[0]), model)))
+def loadAndSaveImage(filename, number, totalNumber):
+    tmp1 = loadImages.load_stereo(views[0][0] / filename, models[0])
+    tmp2 = loadImages.load_stereo(views[1][0] / filename, models[1])
+    tmp3 = loadImages.load_stereo(views[2][0] / filename, models[2])
 
-                # Image is loaded in a 0-255 float, where cv works in 0-1 float, so divide by 255
-                # Also converting the image from a PIL based image to a cv2 based image
-                images[-1] = (np.array(images[-1]))[:, :, ::-1].astype(np.uint8)
+    tmp1 = cv2.cvtColor(tmp1.astype(np.uint8), cv2.COLOR_BGR2RGB)
+    tmp2 = cv2.cvtColor(tmp2.astype(np.uint8), cv2.COLOR_BGR2RGB)
+    tmp3 = cv2.cvtColor(tmp3.astype(np.uint8), cv2.COLOR_BGR2RGB)
 
-                # Store the image in the processed folder
-                cv.imwrite(str(cur_view[1]), images[-1])
+    cv2.imwrite(str(views[0][1] / filename), tmp1)
+    cv2.imwrite(str(views[1][1] / filename), tmp2)
+    cv2.imwrite(str(views[2][1] / filename), tmp3)
 
-        # The image is loaded
-        end = timer()
-        print(f"Loaded in {end-start:.5f}s -> ", end='')
-        # Display the images if applicable
-        if display:
-            cv.imshow("Left", images[0])
-            cv.imshow("Center", images[1])
-            cv.imshow("Right", images[2])
-            print("Image showing -> ", end='')
-            cv.waitKey(waitTime)
+    print(f"{number}/{totalNumber}\t{filename}")
 
-        print("Next")
+    # cv2.imshow("left", tmp1)
+    # cv2.imshow("centre", tmp2)
+    # cv2.imshow("right", tmp3)
+
+
+threadpool = QThreadPool()
+threadpool.setMaxThreadCount(10)  # make sure this is less than your logical processors
+print("Multithreading with maximum %d threads" % threadpool.maxThreadCount())
+
+amount = len(timestamps)
+for cnt, filename in enumerate(timestamps):
+    filename += ".png"
+    worker = Worker(loadAndSaveImage, filename, cnt+1, amount)
+    threadpool.start(worker)
+
+while True:
+    time.sleep(5)

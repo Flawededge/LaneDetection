@@ -1,19 +1,14 @@
-import sys
-from PyQt5.QtWidgets import *
 from gui import Ui_MainWindow as Window
-import os
 from pathlib import Path
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 import processing
-import cv2
-import processing
-from importlib import reload  # reload(processing)
-import time
-import threading
-import traceback, sys
-
+import sys
+import os
+from tkinter.filedialog import askdirectory
+from tkinter import Tk
+from myLib import imageLoading, qtThreading
 
 
 # Start of the main UI class. Contains all of the GUI functions
@@ -23,6 +18,7 @@ class Ui(QMainWindow):
     cameraModels = None
     fileList = []
     imageQueue = []
+    fileDialog = False
 
     def __init__(self):
         # GUI basic setup stuff
@@ -33,8 +29,8 @@ class Ui(QMainWindow):
 
         # Multithreading setup
         self.threadpool = QThreadPool()
-        self.threadpool.setMaxThreadCount(4)
-        print("Multithreading with maximum %d threads" % self.threadpool.maxThreadCount())
+        self.threadpool.setMaxThreadCount(int(self.threadpool.maxThreadCount()*0.75))
+        print("Multithreading with maximum %d threads" % int(self.threadpool.maxThreadCount()*0.75))
 
         # Set up directory structure
         self.directories = [
@@ -71,40 +67,28 @@ class Ui(QMainWindow):
                   processing.CameraModel(self.currentFolder/"Models", self.currentFolder/"stereo/centre"),
                   processing.CameraModel(self.currentFolder/"Models", self.currentFolder/"stereo/right")]
 
-    def preload_images(self):
-        """ Intended to preload all of the images in other threads to increase speed
+    def update_progress(self):
+        self.ui.progressBar.setValue(self.ui.progressBar.value()+1)
 
-        :return:
-        """
+    def display_image(self, image):  # Accepts cv2 images only
+        height, width, channel = image.shape
+        bytes_per_line = 3 * width
+        image = QImage(image.data, width, height, bytes_per_line, QImage.Format_RGB888)
 
-        threads =
+        scene = QGraphicsScene()
+        scene.addPixmap(QPixmap(image))
 
-'''
-    def preload_display(self, incoming):
-        view, img, name = incoming
-        print(f"Image recieved\t{name[:-10]}\t{view}")
-        cv2.imwrite(name, img)
-        # cv2.imshow(view, img/255)
-        image = QImage(img, img.shape[1], img.shape[0], img.shape[1] * 3, QImage.Format_RGB888)
-        pix = QPixmap(image)
-        self.ui.imageDisp.setPixmap(pix)
-        qApp.processEvents()
-        self.ui.progressBar.setValue(self.ui.progressBar.value() + 1)
+        self.ui.imageView.setScene(scene)
+        self.ui.imageView.show()
 
-    def preload_queue(self):
-        self.ui.progressBar.setMaximum(len(self.fileList)*3)
-        for cnt, img in enumerate(self.fileList):
-            print(cnt)
-            for channel, model in zip(["/left/", "/centre/", "/right/"], self.cameraModels):
-                # Create the process image thread
-                worker = Worker(processing.load_stereo, self.currentFolder/("stereo"+channel+img+".png"), model, channel, str(self.currentFolder / ("preprocessed"+channel+img+".png")))  # Any other args, kwargs are passed to the run function
-                worker.signals.result.connect(self.preload_display)
-                self.threadpool.start(worker)  # Start the thread
+    def start_preload(self):
+        self.ui.progressBar.setValue(0)
+        self.ui.progressBar.setMaximum(len(self.fileList))
+        worker = qtThreading.Worker(imageLoading.preload_sequencer, self.currentFolder/"stereo",
+                                    self.currentFolder/"preprocessed", self.fileList, self.cameraModels,
+                                    self.threadpool, self.update_progress)
+        self.threadpool.start(worker)
 
-    def preload_create_queue_thread(self):
-        worker = Worker(self.preload_queue())  # Create the thread
-        self.threadpool.start(worker)  # Start the thread
-'''
     def check_folder_structure(self):
         error = False
         for checkBox, directory in self.directories:
@@ -134,15 +118,25 @@ class Ui(QMainWindow):
             self.ui.imageControls.setEnabled(True)
             self.ui.g_f_good.setChecked(True)
             self.get_timestamps()
-            self.preload_create_queue_thread()
+            self.start_preload()
 
     def browse_folder(self):
-        self.currentFolder = Path(str(QFileDialog.getExistingDirectory(self, "Select Directory")))
+        if self.fileDialog:
+            return
+
+        self.fileDialog = True
+        Tk().withdraw()
+        tmp = Path(askdirectory())
+        self.fileDialog = False
+
+        if str(tmp) == '.':  # Check if the file dialog was closed
+            return
+
+        self.currentFolder = tmp
         self.ui.folderLine.setText(str(self.currentFolder))
         self.check_folder_structure()
 
     def manual_line_change(self):
-        print("Enter pressed")
         self.currentFolder = Path(self.ui.folderLine.text())
         self.check_folder_structure()
 

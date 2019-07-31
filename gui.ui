@@ -36,7 +36,11 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <widget class="QLineEdit" name="folderLine"/>
+             <widget class="QLineEdit" name="folderLine">
+              <property name="text">
+               <string>F:\Datasets\TestSet</string>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QPushButton" name="browseButton">
@@ -55,20 +59,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="imageDisp">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>No image loaded yet</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
+          <widget class="QGraphicsView" name="imageView"/>
          </item>
          <item>
           <widget class="QGroupBox" name="imageControls">
@@ -177,7 +168,7 @@
                <number>0</number>
               </property>
               <property name="format">
-               <string>%p/%m</string>
+               <string>%p%</string>
               </property>
              </widget>
             </item>

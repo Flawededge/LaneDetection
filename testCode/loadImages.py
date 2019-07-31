@@ -152,7 +152,7 @@ def load_stereo(image_path: str, model: CameraModel = None):
     """
 
     pattern = 'gbrg'
-    img = Image.open(image_path)
+    img = Image.open(str(image_path))
     img = demosaic(img, pattern)
 
     if model:

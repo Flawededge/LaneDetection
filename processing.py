@@ -143,7 +143,8 @@ class CameraModel:
         lut = lut.reshape([2, lut.size // 2])
         self.bilinear_lut = lut.transpose()
 
-def load_stereo(image_path: str, model: CameraModel = None, view=None, outName=None):
+
+def load_stereo(image_path: str, model: CameraModel = None):
     """ Loads an image and processes it with a model (if given)
 
     :param image_path: The path to an image
@@ -163,29 +164,4 @@ def load_stereo(image_path: str, model: CameraModel = None, view=None, outName=N
         if model:
             # Apply the model
             img = model.undistort(img)
-            # print("Applying model")
-        return [view, img, outName]
-
-class PreloadImages(QThread):
-
-    def __init__(self, stereoDir, timestampList):
-        QThread.__init__(self)
-
-    def __del__(self):
-        self.wait()
-
-    def run(self):
-        # your logic here
-
-class LoadStereo(QThread):
-
-    def __init__(self, image_path, cameraModel, view):
-        self.image_path = image_path
-        self.cameraModel = cameraModel
-        self.view = view
-
-    def __del__(self):
-        self.wait()
-
-    def run(self):
-        # your logic here
+        return img
