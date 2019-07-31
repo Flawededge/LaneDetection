@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>762</width>
-    <height>600</height>
+    <height>709</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,20 @@
           </widget>
          </item>
          <item>
-          <widget class="QGraphicsView" name="g_imageView"/>
+          <widget class="QLabel" name="imageDisp">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>No image loaded yet</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QGroupBox" name="imageControls">
@@ -117,6 +130,60 @@
            </layout>
           </widget>
          </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="title">
+            <string>Information</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Currently processing: </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="Status">
+              <property name="text">
+               <string>Nothing</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="progressBar">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>0</number>
+              </property>
+              <property name="format">
+               <string>%p/%m</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
@@ -139,7 +206,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_gps">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -151,6 +218,9 @@
             <string>gps</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -158,7 +228,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_lms_front">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -170,6 +240,9 @@
             <string>lms_front</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -177,7 +250,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_models">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -189,6 +262,9 @@
             <string>Models</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -196,7 +272,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_processed">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -208,6 +284,9 @@
             <string>processed</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -215,7 +294,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_stereo">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -227,6 +306,9 @@
             <string>stereo</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -234,7 +316,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_left">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -246,6 +328,9 @@
             <string>→ Left</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -253,7 +338,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_centre">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -265,6 +350,9 @@
             <string>→ Centre</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -272,7 +360,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_right">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -284,6 +372,9 @@
             <string>→ Right</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -291,7 +382,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_lmsTime">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -303,6 +394,9 @@
             <string>lms_front.timestamps</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -310,7 +404,7 @@
          <item>
           <widget class="QCheckBox" name="g_f_stereoTime">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -322,6 +416,9 @@
             <string>stereo.timestamps</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -329,12 +426,15 @@
          <item>
           <widget class="QCheckBox" name="g_f_good">
            <property name="enabled">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="text">
             <string>Folder structure good!</string>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="tristate">
             <bool>false</bool>
            </property>
           </widget>
@@ -356,6 +456,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QListWidget" name="listWidget">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
              <horstretch>0</horstretch>
