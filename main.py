@@ -3,7 +3,7 @@ from pathlib import Path
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-import processing
+# from testCode import processing
 import sys
 import os
 from tkinter.filedialog import askdirectory
@@ -63,9 +63,9 @@ class Ui(QMainWindow):
             self.fileList = [i.split()[0] for i in file.readlines()]
             container.addItems([f"#{cnt:05}|{i}" for cnt, i in enumerate(self.fileList)])
 
-        self.cameraModels = [processing.CameraModel(self.currentFolder/"Models", self.currentFolder/"stereo/left"),
-                  processing.CameraModel(self.currentFolder/"Models", self.currentFolder/"stereo/centre"),
-                  processing.CameraModel(self.currentFolder/"Models", self.currentFolder/"stereo/right")]
+        self.cameraModels = [imageLoading.CameraModel(self.currentFolder / "Models", self.currentFolder / "stereo/left"),
+                             imageLoading.CameraModel(self.currentFolder / "Models", self.currentFolder / "stereo/centre"),
+                             imageLoading.CameraModel(self.currentFolder / "Models", self.currentFolder / "stereo/right")]
 
     def update_progress(self):
         self.ui.progressBar.setValue(self.ui.progressBar.value()+1)

@@ -8,3 +8,6 @@ pillow
 PyQt5
 pyqt5-tools
 PyQt5-stubs
+
+# Jupyter specific stuff
+tqdm
