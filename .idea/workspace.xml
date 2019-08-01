@@ -57,17 +57,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="3856" />
-    <option name="height" value="2136" />
-  </component>
   <component name="ProjectId" id="1Onmz1xnZ2fJAx9NAhNUVEor4KZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/TestSet" />
@@ -80,15 +75,15 @@
     <option name="myUseBundledCoveragePy" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\testCode" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection" />
+      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\testCode" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\lib" />
       <recent name="C:\Users\Ben\PycharmProjects\LaneDetection\oldCode" />
       <recent name="C:\Users\Ben\PycharmProjects\LaneDetection" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -189,6 +184,9 @@
       <workItem from="1564564489097" duration="5395000" />
       <workItem from="1564613494671" duration="7767000" />
       <workItem from="1564622002252" duration="3647000" />
+      <workItem from="1564627179215" duration="504000" />
+      <workItem from="1564629328869" duration="2334000" />
+      <workItem from="1564685384156" duration="80000" />
     </task>
     <task id="LOCAL-00001" summary="Made changes to a lot">
       <created>1562721388251</created>
