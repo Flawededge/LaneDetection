@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a7f6b8b-e509-40c0-91a1-376bfb7f3fce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/TestSet/IPM_Test.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LaneDetection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaneDetection.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProcessingTesting.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/ProcessingTesting.ipynb" afterDir="false" />
     </list>
@@ -21,38 +24,6 @@
         <option value="Jupyter Notebook" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>:</find>
-      <find>\</find>
-      <find>args.models_dir</find>
-      <find>modelsDir</find>
-      <find>6682</find>
-      <find>cameraModel</find>
-      <find>shelve</find>
-      <find>exit`</find>
-      <find>scale</find>
-      <find>WorkerSignals</find>
-      <find>status</find>
-      <find>stereo</find>
-      <find>load_stereo</find>
-      <find>progress_callback</find>
-      <find>cameraModels</find>
-      <find>views[0][0]</find>
-      <find>left</find>
-      <find>undistort</find>
-      <find>processing</find>
-      <find>im</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>#</replace>
-      <replace>/</replace>
-      <replace>modelsDir</replace>
-      <replace>args.models_dir</replace>
-      <replace>preprocessed</replace>
-      <replace>store_path</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,15 +46,16 @@
     <option name="myUseBundledCoveragePy" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ben\Desktop\Python Code\TestSet" />
+      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\testCode" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\lib" />
       <recent name="C:\Users\Ben\PycharmProjects\LaneDetection\oldCode" />
       <recent name="C:\Users\Ben\PycharmProjects\LaneDetection" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -187,6 +159,11 @@
       <workItem from="1564627179215" duration="504000" />
       <workItem from="1564629328869" duration="2334000" />
       <workItem from="1564685384156" duration="80000" />
+      <workItem from="1564686818083" duration="602000" />
+      <workItem from="1564696862250" duration="599000" />
+      <workItem from="1565219719294" duration="1497000" />
+      <workItem from="1565223673296" duration="3365000" />
+      <workItem from="1565227963030" duration="4718000" />
     </task>
     <task id="LOCAL-00001" summary="Made changes to a lot">
       <created>1562721388251</created>
@@ -318,6 +295,34 @@
     <MESSAGE value="Started on jupyter processing. Working on reliable lane markings" />
     <option name="LAST_COMMIT_MESSAGE" value="Started on jupyter processing. Working on reliable lane markings" />
   </component>
+  <component name="WindowStateProjectService">
+    <state width="934" height="347" key="GridCell.Tab.-1.bottom" />
+    <state width="934" height="347" key="GridCell.Tab.-1.bottom/1920.1080" />
+    <state width="934" height="347" key="GridCell.Tab.-1.center" />
+    <state width="934" height="347" key="GridCell.Tab.-1.center/1920.1080" />
+    <state width="934" height="347" key="GridCell.Tab.-1.left" />
+    <state width="934" height="347" key="GridCell.Tab.-1.left/1920.1080" />
+    <state width="934" height="347" key="GridCell.Tab.-1.right" />
+    <state width="934" height="347" key="GridCell.Tab.-1.right/1920.1080" />
+    <state width="951" height="347" key="GridCell.Tab.0.bottom" />
+    <state width="951" height="347" key="GridCell.Tab.0.bottom/1920.1080" />
+    <state width="951" height="347" key="GridCell.Tab.0.center" />
+    <state width="951" height="347" key="GridCell.Tab.0.center/1920.1080" />
+    <state width="951" height="347" key="GridCell.Tab.0.left" />
+    <state width="951" height="347" key="GridCell.Tab.0.left/1920.1080" />
+    <state width="951" height="347" key="GridCell.Tab.0.right" />
+    <state width="951" height="347" key="GridCell.Tab.0.right/1920.1080" />
+    <state width="934" height="347" key="GridCell.Tab.1.bottom" />
+    <state width="934" height="347" key="GridCell.Tab.1.bottom/1920.1080" />
+    <state width="934" height="347" key="GridCell.Tab.1.center" />
+    <state width="934" height="347" key="GridCell.Tab.1.center/1920.1080" />
+    <state width="934" height="347" key="GridCell.Tab.1.left" />
+    <state width="934" height="347" key="GridCell.Tab.1.left/1920.1080" />
+    <state width="934" height="347" key="GridCell.Tab.1.right" />
+    <state width="934" height="347" key="GridCell.Tab.1.right/1920.1080" />
+    <state x="445" y="161" key="SettingsEditor" />
+    <state x="445" y="161" key="SettingsEditor/1920.1080" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -330,10 +335,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LaneDetection$FileLoadTesting.coverage" NAME="FileLoadTesting Coverage Results" MODIFIED="1564553365605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LaneDetection$main.coverage" NAME="main Coverage Results" MODIFIED="1564614075477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LaneDetection$play_images__1_.coverage" NAME="play_images (1) Coverage Results" MODIFIED="1562717774939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Code$main.coverage" NAME="main Coverage Results" MODIFIED="1564535905829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$FileLoadTesting.coverage" NAME="FileLoadTesting Coverage Results" MODIFIED="1564553365605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$play_images__1_.coverage" NAME="play_images (1) Coverage Results" MODIFIED="1562717774939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
