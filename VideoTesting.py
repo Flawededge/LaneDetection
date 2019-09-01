@@ -19,17 +19,22 @@ print(f"\nLoading '{targetFile.parts[-1]}' at {targetFile}")
 
 cap = cv.VideoCapture(str(targetFile))  # Get the video capture stream
 progress = range(int(cap.get(cv.CAP_PROP_FRAME_COUNT)))
+
+# Create the base windows and make them smol
 cv.namedWindow('frame', cv.WINDOW_GUI_EXPANDED)  # Build a named window which can be resized
 cv.namedWindow('binaryPipeline', cv.WINDOW_GUI_EXPANDED)  # Build a named window which can be resized
-cv.waitKey(0)
+cv.resizeWindow('frame', 800, 600)
+cv.resizeWindow('binaryPipeline', 800, 600)
+
+# cv.waitKey(0)
 # while cap.isOpened():
 for i in tqdm(progress):
     ret, frame = cap.read()
 
-    binaryProcess = processes.binary_pipeline(frame, True)
+    binaryProcess = processes.binary_pipeline(frame)
     cv.imshow('binaryPipeline', binaryProcess)
     cv.imshow('frame', frame)
-    if cv.waitKey(0) & 0xFF == ord('q'):
+    if cv.waitKey(1) & 0xFF == ord('q'):
         break
 
     clear_output(wait=True)
