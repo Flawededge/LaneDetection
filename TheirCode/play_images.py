@@ -17,8 +17,8 @@ import os
 import re
 import matplotlib.pyplot as plt
 from datetime import datetime as dt
-from oldCode.image import load_image
-from oldCode.camera_model import CameraModel
+from TheirCode.image import load_image
+from TheirCode.camera_model import CameraModel
 
 parser = argparse.ArgumentParser(description='Play back images from a given args.dir')
 

@@ -15,9 +15,9 @@
 import os
 import re
 import numpy as np
-from oldCode.transform import build_se3_transform
+from TheirCode.transform import build_se3_transform
 
-from oldCode.interpolate_poses import interpolate_vo_poses, interpolate_ins_poses
+from TheirCode.interpolate_poses import interpolate_vo_poses, interpolate_ins_poses
 
 
 def build_pointcloud(lidar_dir, poses_file, extrinsics_dir, start_time, end_time, origin_time=-1):
