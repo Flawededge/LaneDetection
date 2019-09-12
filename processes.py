@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 
+first_frame = 1
+cache = None
+
 def grayscale(img):
     """Applies the Grayscale transform
     This will return an image with only one color channel
@@ -69,12 +72,11 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=6):
     y_max = img.shape[0]
     l_slope, r_slope = [], []
     l_lane, r_lane = [], []
-    det_slope = 0.4
+    det_slope = 0
     α = 0.2
     # i got this alpha value off of the forums for the weighting between frames.
     # i understand what it does, but i dont understand where it comes from
     # much like some of the parameters in the hough function
-
     for line in lines:
         # 1
         for x1, y1, x2, y2 in line:
@@ -89,8 +91,8 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=6):
         y_global_min = min(y1, y2, y_global_min)
 
     # to prevent errors in challenge video from dividing by zero
-    if ((len(l_lane) == 0) or (len(r_lane) == 0)):
-        print('no lane detected')
+    if (len(l_lane) == 0) or (len(r_lane) == 0):
+        print(' no lane detected', end='')
         return 1
 
     # 3
@@ -174,19 +176,32 @@ def weighted_img(img, initial_img, α=0.8, β=1., λ=0.):
     return cv2.addWeighted(initial_img, α, img, β, λ)
 
 
+def shw(image, delay=1):
+    cv2.imshow('t', image)
+    cv2.waitKey(delay)
+
+
 def process_image(image):
     global first_frame
+
+    # image[:, :, 0] = cv2.equalizeHist(image[:, :, 0])
+    # image[:, :, 1] = cv2.equalizeHist(image[:, :, 1])
+    # image[:, :, 2] = cv2.equalizeHist(image[:, :, 2])
 
     gray_image = grayscale(image)
     img_hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
     # hsv = [hue, saturation, value]
     # more accurate range for yellow since it is not strictly black, white, r, g, or b
 
+    img_hsv[:, :, 0] = cv2.equalizeHist(img_hsv[:, :, 0])
+    img_hsv[:, :, 1] = cv2.equalizeHist(img_hsv[:, :, 1])
+    img_hsv[:, :, 2] = cv2.equalizeHist(img_hsv[:, :, 2])
+
     lower_yellow = np.array([20, 100, 100], dtype="uint8")
     upper_yellow = np.array([30, 255, 255], dtype="uint8")
 
     mask_yellow = cv2.inRange(img_hsv, lower_yellow, upper_yellow)
-    mask_white = cv2.inRange(gray_image, 200, 255)
+    mask_white = cv2.inRange(img_hsv, (0, 0, 150), (160, 50, 255))
     mask_yw = cv2.bitwise_or(mask_white, mask_yellow)
     mask_yw_image = cv2.bitwise_and(gray_image, mask_yw)
 
@@ -197,7 +212,6 @@ def process_image(image):
     low_threshold = 50
     high_threshold = 150
     canny_edges = canny(gauss_gray, low_threshold, high_threshold)
-
     imshape = image.shape
     lower_left = [imshape[1] / 9, imshape[0]]
     lower_right = [imshape[1] - imshape[1] / 9, imshape[0]]
