@@ -72,11 +72,12 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=6):
     y_max = img.shape[0]
     l_slope, r_slope = [], []
     l_lane, r_lane = [], []
-    det_slope = 0
+    det_slope = 0.4
     α = 0.2
     # i got this alpha value off of the forums for the weighting between frames.
     # i understand what it does, but i dont understand where it comes from
     # much like some of the parameters in the hough function
+
     for line in lines:
         # 1
         for x1, y1, x2, y2 in line:
@@ -96,8 +97,9 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=6):
         return 1
 
     # 3
-    l_slope_mean = np.mean(l_slope, axis=0)
-    r_slope_mean = np.mean(r_slope, axis=0)
+    # l_tmp = [i for i in l_slope if np.isfinite(i)]
+    l_slope_mean = np.mean([i for i in l_slope if np.isfinite(i)], axis=0)
+    r_slope_mean = np.mean([i for i in r_slope if np.isfinite(i)], axis=0)
     l_mean = np.mean(np.array(l_lane), axis=0)
     r_mean = np.mean(np.array(r_lane), axis=0)
 
@@ -146,7 +148,7 @@ def draw_lines(img, lines, color=[255, 0, 0], thickness=6):
     cache = next_frame
 
 
-def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
+def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap, line_img=None):
     """
     `img` should be the output of a Canny transform.
 
@@ -154,8 +156,14 @@ def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
     """
     lines = cv2.HoughLinesP(img, rho, theta, threshold, np.array([]), minLineLength=min_line_len,
                             maxLineGap=max_line_gap)
-    line_img = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
-    draw_lines(line_img, lines)
+    if line_img is None:
+        line_img = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
+
+    if lines is None:
+        print("No lines detected", end='')
+        return line_img
+
+    draw_lines(line_img, lines, thickness=1)
     return line_img
 
 
@@ -225,7 +233,7 @@ def process_image(image):
     rho = 4
     theta = np.pi / 180
     # threshold is minimum number of intersections in a grid for candidate line to go to output
-    threshold = 30
+    threshold = 5
     min_line_len = 100
     max_line_gap = 180
     # my hough values started closer to the values in the quiz, but got bumped up considerably for the challenge video
