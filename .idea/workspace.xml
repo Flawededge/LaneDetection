@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a7f6b8b-e509-40c0-91a1-376bfb7f3fce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/BaseDetectionLib/loading.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOldCode/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyOldCode/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProcessignTesting2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/MyOldCode/ProcessignTesting2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProcessingTesting.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/MyOldCode/ProcessingTesting.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VideoProcessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/MyOldCode/VideoProcessing.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VideoTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/VideoTesting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processes.py" beforeDir="false" afterPath="$PROJECT_DIR$/processes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myLib/imageLoading.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myLib/qtThreading.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="356" />
+    <option name="myElementSize" value="751" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="LaneDetection" />
@@ -47,16 +53,16 @@
     <option name="myUseBundledCoveragePy" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
-      <recent name="C:\Users\Ben\Desktop\Python Code\TestSet" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\MyOldCode" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\testCode" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\lib" />
       <recent name="C:\Users\Ben\PycharmProjects\LaneDetection\oldCode" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
+      <recent name="C:\Users\Ben\Desktop\Python Code\TestSet" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -76,6 +82,9 @@
       <module name="LaneDetection" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -113,6 +122,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="loading" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LaneDetection" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BaseDetectionLib" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BaseDetectionLib/loading.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" activateToolWindowBeforeRun="false" temporary="true">
       <module name="LaneDetection" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,10 +169,12 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python.VideoTesting" />
+      <item itemvalue="Python.loading" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.VideoTesting" />
+        <item itemvalue="Python.loading" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -201,6 +234,9 @@
       <workItem from="1568241854054" duration="178000" />
       <workItem from="1568242389527" duration="17458000" />
       <workItem from="1568326606635" duration="7918000" />
+      <workItem from="1568447279165" duration="4000" />
+      <workItem from="1569204534267" duration="7742000" />
+      <workItem from="1569274605729" duration="13191000" />
     </task>
     <task id="LOCAL-00001" summary="Made changes to a lot">
       <created>1562721388251</created>
@@ -384,19 +420,21 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="max(l_slope)" language="Python" />
-        <watch expression="min(l_slope)" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LaneDetection$main.coverage" NAME="main Coverage Results" MODIFIED="1566874346356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Python_Code$main.coverage" NAME="main Coverage Results" MODIFIED="1564535905829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LaneDetection$FileLoadTesting.coverage" NAME="FileLoadTesting Coverage Results" MODIFIED="1564553365605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LaneDetection$VideoTesting.coverage" NAME="VideoTesting Coverage Results" MODIFIED="1568334877560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$loading.coverage" NAME="loading Coverage Results" MODIFIED="1569278375294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BaseDetectionLib" />
+    <SUITE FILE_PATH="coverage/LaneDetection$main.coverage" NAME="main Coverage Results" MODIFIED="1566874346356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LaneDetection$play_images__1_.coverage" NAME="play_images (1) Coverage Results" MODIFIED="1562717774939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python_Code$main.coverage" NAME="main Coverage Results" MODIFIED="1564535905829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$VideoTesting.coverage" NAME="VideoTesting Coverage Results" MODIFIED="1569291863166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

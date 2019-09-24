@@ -8,7 +8,7 @@ import sys
 import os
 from tkinter.filedialog import askdirectory
 from tkinter import Tk
-from myLib import imageLoading, qtThreading
+from BaseDetectionLib import imageLoading, qtThreading
 
 
 # Start of the main UI class. Contains all of the GUI functions
