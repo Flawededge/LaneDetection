@@ -9,37 +9,138 @@ import sys
 import numpy as np
 import cv2 as cv
 
+from matplotlib import pyplot as plt
+from scipy import signal
+from collections import deque
 
-def reliable_lane_markings(image, ipm_points, progress_display=False, ipm_Size=1800):
-    """
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
+# Global figure for intra frame pyplot window use
+plt.ion()
+fig = plt.figure()
+
+rollingLeft = deque(maxlen=20)
+rollingRight = deque(maxlen=20)
+
+
+def reliable_lane_markings(image, ipm_points, progress_display=False, ipm_size=200):
+    global line1
+    """ Applies the reliable_lane_markings process
 
     :param image: The input image
     :param ipm_points:
     :param progress_display:
+    :param ipm_size:
     :return:
     """
 
+    # Make the output perspective points
     ipm_output = np.float32([  # Setup the output transform
-        (0, 0),
-        (ipm_Size, 0),
-        (ipm_Size, ipm_Size),
-        (0, ipm_Size)
+        (0, 0),  # Top left
+        (ipm_size, 0),  # Top right
+        (ipm_size, ipm_size),  # Bottom right
+        (0, ipm_size)  # Bottom left
     ])
-    transform = cv.getPerspectiveTransform(ipm_points, ipm_output)  # Get transform
-    perspective = cv.warpPerspective(image, transform, (int(ipm_Size*1.1), int(ipm_Size*1.1)))  # Apply it
 
-    laneLines = np.zeros_like(perspective)
+    # Perspective transform
+    M = cv.getPerspectiveTransform(ipm_points, ipm_output)  # Get transform
+    perspective = cv.warpPerspective(image, M, (int(ipm_size * 1), int(ipm_size * 1)))  # Apply it
+    perspective = cv.bilateralFilter(perspective, 11, 180, 120)
+
+    # Get the lane lines
+    gray_perspective = cv.cvtColor(perspective, cv.COLOR_BGR2HSV)[:, :, 2]
+    gray_perspective = cv.adaptiveThreshold(gray_perspective, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 9, -1)
+    gray_perspective = cv.dilate(gray_perspective, (7, 7))
+    gray_perspective = cv.bilateralFilter(gray_perspective, 15, 100, 100)
+
+    thresh_perspective = cv.medianBlur(gray_perspective, 7)
+    thresh_perspective = cv.dilate(thresh_perspective, (3, 3))
+    thresh_perspective = cv.morphologyEx(thresh_perspective, cv.MORPH_CLOSE, (7, 7), iterations=20)
+
+    # Calculate the weight of each column
+    weights = np.array([np.average(i) for i in np.transpose(thresh_perspective)])
+
+    if progress_display:  # For pyplot display
+        fig.clear()
+        ax = fig.add_subplot(111)
+        ax.plot(weights)
+        # plt.show()
+        fig.canvas.draw()
+        # fig.canvas.flush_events()
+
+        # Get the index of the peaks from the graph
+    peaks, _ = signal.find_peaks(weights)
+
+    # Append the new average to the average
+    if len((weights[peaks[peaks < ipm_size/2]])) and len((weights[peaks[peaks > ipm_size/2]])):
+        rollingLeft.append(peaks[np.argmax(weights[peaks[peaks < ipm_size/2]])])
+        rollingRight.append(peaks[np.argmax(weights[peaks[peaks > ipm_size/2]]) + len(peaks[peaks < ipm_size/2])])
+
+    maxLeft = int(np.average(rollingLeft))  # Get the new average
+    maxRight = int(np.average(rollingRight))
+
+    # Draw the lines to show
+    cv.line(perspective, (maxLeft, 0), (maxLeft, int(ipm_size)), (255, 0, 0), 1)
+    cv.line(perspective, (maxRight, 0), (maxRight, int(ipm_size)), (255, 0, 0), 1)
+
+    # # Inverse perspective transform
+    # Make the mask to be inverted
+    mask_perspective = np.zeros_like(perspective)
+    cv.rectangle(mask_perspective, (maxLeft, 0), (maxRight, int(ipm_size)), (0, 0, 255), -1)
+    cv.line(mask_perspective, (maxLeft, 0), (maxLeft, int(ipm_size)), (255, 0, 0), 5)
+    cv.line(mask_perspective, (maxRight, 0), (maxRight, int(ipm_size)), (255, 0, 0), 5)
+
+    # Do the transform
+    M = cv.getPerspectiveTransform(ipm_output, ipm_points)
+    output_mask = cv.warpPerspective(mask_perspective, M, (image.shape[1], image.shape[0]))  # Apply it
+    image = cv.addWeighted(image, 1, output_mask, 0.5, 0)
 
     if progress_display:
         cv.imshow("Reliable: Perspective", perspective)
+        cv.imshow("Reliable: PerspecGray", gray_perspective)
+        cv.imshow("Reliable: PerspThresh", thresh_perspective)
+        cv.imshow("Reliable: PerspecMask", mask_perspective)
+        cv.imshow("Reliable:  outputMask", output_mask)
 
-    for i in ipm_points:  # Print circles on the original image
-        cv.circle(image, (i[0], i[1]), 3, (255, 0, 0), 1)
-
+    cv.line(image, tuple(ipm_points[0]), tuple(ipm_points[1]), (191, 66, 245), 2)
+    cv.line(image, tuple(ipm_points[1]), tuple(ipm_points[2]), (191, 66, 245), 2)
+    cv.line(image, tuple(ipm_points[2]), tuple(ipm_points[3]), (191, 66, 245), 2)
+    cv.line(image, tuple(ipm_points[3]), tuple(ipm_points[0]), (191, 66, 245), 2)
     return image
 
 
-def sdc_lane_detection(image, progress_display=False):
+def sdc_lane_detection(image, roi_clip, progress_display=False):
+    img_hsv = cv.cvtColor(image, cv.COLOR_RGB2HSV)
+
+    new_image = image.copy()
+    new_image = cv.GaussianBlur(new_image, (5, 5), 0)
+    mask_white = cv.inRange(image[:, :, :], (110, 110, 110), (180, 180, 180))
+
+    # Clip to the ROI, as it will make some of the binary functions run faster
+    mask_white = mask_white & roi_clip
+
+    # mask_white = cv.morphologyEx(mask_white, cv.MORPH_CLOSE, (3, 3))
+    mask_white = cv.medianBlur(mask_white, 5)
+
+    canny_edges = cv.Canny(mask_white, 50, 255)
+    # rho and theta are the distance and angular resolution of the grid in Hough space
+    # same values as quiz
+    rho = 2
+    theta = np.pi / 180
+    # threshold is minimum number of intersections in a grid for candidate line to go to output
+    threshold = 30
+    min_line_len = 60
+    max_line_gap = 180
+    # my hough values started closer to the values in the quiz, but got bumped up considerably for the challenge video
+
+    canny_edges = cv.cvtColor(canny_edges, cv.COLOR_GRAY2BGR)
+    # line_image = cv.hough(mask_white, rho, theta, threshold, min_line_len, max_line_gap, image)
+    # result = processes.weighted_img(canny_edges, image, α=0.8, β=1., λ=0.)
+
+    if progress_display:
+        pass
+
     return image
 
 
@@ -177,9 +278,3 @@ class MainWindow(QMainWindow):
     def recurring_timer(self):
         self.counter += 1
         self.l.setText("Counter: %d" % self.counter)
-
-
-if __name__ == '__main__':
-    app = QApplication([])
-    window = MainWindow()
-    app.exec_()

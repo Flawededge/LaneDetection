@@ -23,8 +23,7 @@ print(f"\nLoading '{targetFile.parts[-1]}' at {targetFile}")
 cap = cv.VideoCapture(str(targetFile))  # Get the video capture stream
 progress = range(int(cap.get(cv.CAP_PROP_FRAME_COUNT)))
 
-cv.namedWindow('frame', cv.WINDOW_GUI_EXPANDED)  # Build a named window which can be resized
-cv.resizeWindow('frame', 960, 540)
+
 
 # Generate the ROI image
 shape = (540, 960)  # Y, X cause numpy is a heathen
@@ -35,7 +34,28 @@ roi_clip = np.zeros(shape, dtype=np.uint8)  # Create a blank image for the ROI c
 cv.rectangle(roi_clip, (int((shape[1] - width) / 2), shape[0] - offsetOffBottom - height),
              (int((shape[1] + width) / 2), shape[0] - offsetOffBottom), 255, -1)
 
-# while cap.isOpened():
+# Pre-create windows
+windowList = [
+    # Base outputs
+    # "SDC: Output",
+    "Reliable: Output"
+
+    # Reliable lane markings windows
+    , "Reliable: Perspective", "Reliable: PerspecGray", "Reliable: PerspThresh",
+    "Reliable: PerspecMask", "Reliable:  outputMask"
+
+    # SDC Lane detection
+
+]
+windowSize = [820, 540]  # The size of each window
+grid = 2  # How many windows fit across a screen
+startX = 2200
+titleOffset = 33
+for cnt, i in enumerate(windowList):
+    cv.namedWindow(i, cv.WINDOW_GUI_EXPANDED)  # Build a named window which can be resized
+    cv.resizeWindow(i, windowSize[0], windowSize[1])
+    cv.moveWindow(i, (windowSize[0]*int(cnt%grid))+startX, ((windowSize[1]+titleOffset)*int(cnt/grid)))
+
 for i in tqdm(progress):
     ret, frame = cap.read()
     frame = cv.resize(frame, (960, 540))
@@ -49,13 +69,13 @@ for i in tqdm(progress):
         (740, 304),
         (200, 330)
     ])
-    cv.imshow("Reliable", loading.reliable_lane_markings(frame.copy(), ipm_points, progress_display=True))
+    cv.imshow("Reliable: Output", loading.reliable_lane_markings(frame.copy(), ipm_points, progress_display=True))
 
     # SDC Lane detection
-    loading.sdc_lane_detection(frame.copy())
+    # cv.imshow("SDC: Output", loading.sdc_lane_detection(frame.copy(), roi_clip))
 
     # Neural network
-    loading.neural_lane(frame.copy())
+    # loading.neural_lane(frame.copy())
 
     # # The initial attempt at processing
     # img_hsv = cv.cvtColor(frame, cv.COLOR_RGB2HSV)
