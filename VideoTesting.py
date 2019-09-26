@@ -14,6 +14,10 @@ from BaseDetectionLib import loading
 path = Path("D:\Golf-cart-dataset\My Videos")
 number = 1
 
+# 0 = off, 1 = Only output, 2 = Show steps
+reliableLaneMarkings = 0
+SDCLane = 2
+
 files = [i for i in path.iterdir()]
 [print(f"{cnt}|\t{i}") for cnt, i in enumerate(files)]
 
@@ -23,33 +27,25 @@ print(f"\nLoading '{targetFile.parts[-1]}' at {targetFile}")
 cap = cv.VideoCapture(str(targetFile))  # Get the video capture stream
 progress = range(int(cap.get(cv.CAP_PROP_FRAME_COUNT)))
 
-
-
-# Generate the ROI image
-shape = (540, 960)  # Y, X cause numpy is a heathen
-width = 400
-height = 80
-offsetOffBottom = 220
-roi_clip = np.zeros(shape, dtype=np.uint8)  # Create a blank image for the ROI clipping
-cv.rectangle(roi_clip, (int((shape[1] - width) / 2), shape[0] - offsetOffBottom - height),
-             (int((shape[1] + width) / 2), shape[0] - offsetOffBottom), 255, -1)
-
 # Pre-create windows
-windowList = [
-    # Base outputs
-    # "SDC: Output",
-    "Reliable: Output"
+windowList = []
+if reliableLaneMarkings:
+    windowList.append("Reliable: Output")
+if reliableLaneMarkings == 2:
+    [windowList.append(i) for i in ["Reliable: Perspective", "Reliable: PerspecGray", "Reliable: PerspThresh",
+                                    "Reliable: PerspecMask", "Reliable:  outputMask"]]
 
-    # Reliable lane markings windows
-    , "Reliable: Perspective", "Reliable: PerspecGray", "Reliable: PerspThresh",
-    "Reliable: PerspecMask", "Reliable:  outputMask"
+if SDCLane:
+    windowList.append("SDC: Output")
+if SDCLane == 2:
+    [windowList.append(i) for i in ["SDC: mask_image", "SDC: mask_rgb", "SDC: mask_hsv",
+                                    "SDC: mask_sobelx", "SDC: mask_sobely", "SDC: mask_laplacian",
+                                    "SDC: mask_edge_comb",
+                                    "SDC: full_mask",  "SDC: filtered_mask"]]
 
-    # SDC Lane detection
-
-]
-windowSize = [820, 540]  # The size of each window
-grid = 2  # How many windows fit across a screen
-startX = 2200
+windowSize = [480, 320]  # The size of each window
+grid = 4  # How many windows fit across a screen
+startX = 0
 titleOffset = 33
 for cnt, i in enumerate(windowList):
     cv.namedWindow(i, cv.WINDOW_GUI_EXPANDED)  # Build a named window which can be resized
@@ -60,19 +56,19 @@ for i in tqdm(progress):
     ret, frame = cap.read()
     frame = cv.resize(frame, (960, 540))
 
-    # Show the initial frame
-
-    # Reliable lane markings
-    ipm_points = np.float32([
-        (384, 238),
-        (501, 231),
-        (740, 304),
-        (200, 330)
-    ])
-    cv.imshow("Reliable: Output", loading.reliable_lane_markings(frame.copy(), ipm_points, progress_display=True))
+    # # Reliable lane markings
+    ipm_points = np.float32([(384, 238), (501, 231), (740, 304), (200, 330)])
+    if reliableLaneMarkings == 2:
+        cv.imshow("Reliable: Output", loading.reliable_lane_markings(frame.copy(), ipm_points, progress_display=True))
+    elif reliableLaneMarkings:
+        cv.imshow("Reliable: Output", loading.reliable_lane_markings(frame.copy(), ipm_points, progress_display=False))
 
     # SDC Lane detection
-    # cv.imshow("SDC: Output", loading.sdc_lane_detection(frame.copy(), roi_clip))
+    roiRect = (280, 160, 680, 220)  # A rectangle to crop down to (x, y, x, y) top left, bottom right
+    if SDCLane == 2:
+        cv.imshow("SDC: Output", loading.sdc_lane_detection(frame.copy(), roiRect, apply_roi=True, progress_display=True))
+    elif SDCLane:
+        cv.imshow("SDC: Output", loading.sdc_lane_detection(frame.copy(), roiRect, apply_roi=True, progress_display=False))
 
     # Neural network
     # loading.neural_lane(frame.copy())
@@ -107,7 +103,7 @@ for i in tqdm(progress):
 
     # cv.imshow('t', canny_edges)
 
-    if cv.waitKey(1) & 0xFF == ord('q'):
+    if cv.waitKey(1) == 27:
         break
 
 cap.release()

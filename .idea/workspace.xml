@@ -2,19 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a7f6b8b-e509-40c0-91a1-376bfb7f3fce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Ben.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BaseDetectionLib/threading.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BaseDetectionLib/loading.py" beforeDir="false" afterPath="$PROJECT_DIR$/BaseDetectionLib/loading.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyOldCode/VideoProcessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/MyOldCode/VideoProcessing.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VideoTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/VideoTesting.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="751" />
+    <option name="myElementSize" value="356" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="LaneDetection" />
@@ -30,34 +31,46 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="ab27ad58-cc5b-4a6f-989a-de39c3099cea" />
   <component name="ProjectId" id="1Onmz1xnZ2fJAx9NAhNUVEor4KZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/TestSet" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SDC-Lane-and-Vehicle-Detection-Tracking" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="PyScientificConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyCoverageOptionsProvider">
     <option name="myUseBundledCoveragePy" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
+      <recent name="C:\Users\Ben\Desktop\Python Code\TestSet" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\MyOldCode" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\testCode" />
       <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\lib" />
       <recent name="C:\Users\Ben\PycharmProjects\LaneDetection\oldCode" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\crdig\PycharmProjects\LaneDetection\TestSet" />
-      <recent name="C:\Users\Ben\Desktop\Python Code\TestSet" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -77,9 +90,6 @@
       <module name="LaneDetection" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -117,28 +127,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="loading" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="LaneDetection" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BaseDetectionLib" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BaseDetectionLib/loading.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" activateToolWindowBeforeRun="false" temporary="true">
       <module name="LaneDetection" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -164,12 +152,10 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python.VideoTesting" />
-      <item itemvalue="Python.loading" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.VideoTesting" />
-        <item itemvalue="Python.loading" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -228,13 +214,11 @@
       <workItem from="1568241555365" duration="286000" />
       <workItem from="1568241854054" duration="178000" />
       <workItem from="1568242389527" duration="17458000" />
-      <workItem from="1568326606635" duration="7918000" />
-      <workItem from="1568447279165" duration="4000" />
-      <workItem from="1569204534267" duration="7742000" />
-      <workItem from="1569274605729" duration="13191000" />
-      <workItem from="1569291927193" duration="29000" />
-      <workItem from="1569360575744" duration="10409000" />
-      <workItem from="1569373832984" duration="10963000" />
+      <workItem from="1568326606635" duration="9058000" />
+      <workItem from="1568336496781" duration="690000" />
+      <workItem from="1568349700922" duration="109000" />
+      <workItem from="1569199970163" duration="1218000" />
+      <workItem from="1569448769936" duration="12234000" />
     </task>
     <task id="LOCAL-00001" summary="Made changes to a lot">
       <created>1562721388251</created>
@@ -327,12 +311,12 @@
       <option name="project" value="LOCAL" />
       <updated>1568244133088</updated>
     </task>
-    <task id="LOCAL-00014" summary="Progress on simplifying code">
-      <created>1569291944482</created>
+    <task id="LOCAL-00014" summary="Finished the basic lane detection. Detects the lanes with kinda bad accuracy">
+      <created>1568334975085</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1569291944482</updated>
+      <updated>1568334975085</updated>
     </task>
     <option name="localTasksCounter" value="15" />
     <servers />
@@ -386,36 +370,88 @@
     <MESSAGE value="Working on a more robust structure which is simple to understand" />
     <MESSAGE value="Started on jupyter processing. Working on reliable lane markings" />
     <MESSAGE value="Rebuilding processing to a simpler stream" />
-    <MESSAGE value="Progress on simplifying code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Progress on simplifying code" />
+    <MESSAGE value="Finished the basic lane detection. Detects the lanes with kinda bad accuracy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the basic lane detection. Detects the lanes with kinda bad accuracy" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="934" height="347" key="GridCell.Tab.-1.bottom" />
-    <state width="934" height="347" key="GridCell.Tab.-1.bottom/1920.1080" />
-    <state width="934" height="347" key="GridCell.Tab.-1.center" />
-    <state width="934" height="347" key="GridCell.Tab.-1.center/1920.1080" />
-    <state width="934" height="347" key="GridCell.Tab.-1.left" />
-    <state width="934" height="347" key="GridCell.Tab.-1.left/1920.1080" />
-    <state width="934" height="347" key="GridCell.Tab.-1.right" />
-    <state width="934" height="347" key="GridCell.Tab.-1.right/1920.1080" />
-    <state width="951" height="347" key="GridCell.Tab.0.bottom" />
-    <state width="951" height="347" key="GridCell.Tab.0.bottom/1920.1080" />
-    <state width="951" height="347" key="GridCell.Tab.0.center" />
-    <state width="951" height="347" key="GridCell.Tab.0.center/1920.1080" />
-    <state width="951" height="347" key="GridCell.Tab.0.left" />
-    <state width="951" height="347" key="GridCell.Tab.0.left/1920.1080" />
-    <state width="951" height="347" key="GridCell.Tab.0.right" />
-    <state width="951" height="347" key="GridCell.Tab.0.right/1920.1080" />
-    <state width="934" height="347" key="GridCell.Tab.1.bottom" />
-    <state width="934" height="347" key="GridCell.Tab.1.bottom/1920.1080" />
-    <state width="934" height="347" key="GridCell.Tab.1.center" />
-    <state width="934" height="347" key="GridCell.Tab.1.center/1920.1080" />
-    <state width="934" height="347" key="GridCell.Tab.1.left" />
-    <state width="934" height="347" key="GridCell.Tab.1.left/1920.1080" />
-    <state width="934" height="347" key="GridCell.Tab.1.right" />
-    <state width="934" height="347" key="GridCell.Tab.1.right/1920.1080" />
-    <state x="445" y="161" key="SettingsEditor" />
-    <state x="445" y="161" key="SettingsEditor/1920.1080" />
+    <state x="743" y="183" key="FileChooserDialogImpl" timestamp="1569448841196" />
+    <state x="743" y="183" key="FileChooserDialogImpl/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.-1.bottom" timestamp="1569458911901">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.-1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569458911901" />
+    <state width="934" height="347" key="GridCell.Tab.-1.bottom/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.-1.center" timestamp="1569458911901">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.-1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569458911901" />
+    <state width="934" height="347" key="GridCell.Tab.-1.center/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.-1.left" timestamp="1569458911901">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.-1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569458911901" />
+    <state width="934" height="347" key="GridCell.Tab.-1.left/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.-1.right" timestamp="1569458911901">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.-1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569458911901" />
+    <state width="934" height="347" key="GridCell.Tab.-1.right/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="268" key="GridCell.Tab.0.bottom" timestamp="1569462492571">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569462492571" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="268" key="GridCell.Tab.0.center" timestamp="1569462492571">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569462492571" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="268" key="GridCell.Tab.0.left" timestamp="1569462492571">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569462492571" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="268" key="GridCell.Tab.0.right" timestamp="1569462492571">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569462492571" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.1.bottom" timestamp="1569458903830">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1569458903830" />
+    <state width="934" height="347" key="GridCell.Tab.1.bottom/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.1.center" timestamp="1569458903828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1569458903828" />
+    <state width="934" height="347" key="GridCell.Tab.1.center/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.1.left" timestamp="1569458903828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1569458903828" />
+    <state width="934" height="347" key="GridCell.Tab.1.left/1920.1080" timestamp="1569448841197" />
+    <state width="1877" height="333" key="GridCell.Tab.1.right" timestamp="1569458903829">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="333" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1569458903829" />
+    <state width="934" height="347" key="GridCell.Tab.1.right/1920.1080" timestamp="1569448841197" />
+    <state x="540" y="262" key="IDE.errors.dialog" timestamp="1569448841197" />
+    <state x="540" y="262" key="IDE.errors.dialog/1920.1080" timestamp="1569448841197" />
+    <state x="672" y="235" key="MultipleFileMergeDialog" timestamp="1569449581637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="672" y="235" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1569449581637" />
+    <state x="445" y="161" key="SettingsEditor" timestamp="1569448841197" />
+    <state x="445" y="161" key="SettingsEditor/1920.1080" timestamp="1569448841197" />
+    <state x="727" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate" timestamp="1569449833442">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="727" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate/0.0.1920.1040@0.0.1920.1040" timestamp="1569449833442" />
+    <state x="701" y="163" key="refactoring.ChangeSignatureDialog" timestamp="1569455162322">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="701" y="163" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1569455162322" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -426,26 +462,13 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="line1" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LaneDetection$FileLoadTesting.coverage" NAME="FileLoadTesting Coverage Results" MODIFIED="1564553365605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LaneDetection$loading.coverage" NAME="loading Coverage Results" MODIFIED="1569278375294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BaseDetectionLib" />
     <SUITE FILE_PATH="coverage/LaneDetection$main.coverage" NAME="main Coverage Results" MODIFIED="1566874346356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LaneDetection$play_images__1_.coverage" NAME="play_images (1) Coverage Results" MODIFIED="1562717774939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Code$main.coverage" NAME="main Coverage Results" MODIFIED="1564535905829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LaneDetection$VideoTesting.coverage" NAME="VideoTesting Coverage Results" MODIFIED="1569383523068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$FileLoadTesting.coverage" NAME="FileLoadTesting Coverage Results" MODIFIED="1564553365605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$play_images__1_.coverage" NAME="play_images (1) Coverage Results" MODIFIED="1562717774939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LaneDetection$VideoTesting.coverage" NAME="VideoTesting Coverage Results" MODIFIED="1569462492549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

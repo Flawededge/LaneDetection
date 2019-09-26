@@ -1,31 +1,24 @@
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+import cv2 as cv  # Base CV Libraries
+import numpy as np  # To easily mess with cv image arrays
 
-import time
-import traceback
-import sys
+# Other stuff
+from matplotlib import pyplot as plt  # For plot showing
+from scipy import signal  # For peak detection
+from collections import deque  # For rolling average
 
-import numpy as np
-import cv2 as cv
-
-from matplotlib import pyplot as plt
-from scipy import signal
-from collections import deque
-
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-
-# Global figure for intra frame pyplot window use
-plt.ion()
-fig = plt.figure()
-
+# # -----------------------------------------------------------------------------------------------------
+# START OF RELIABLE LANE MARKINGS
+# Global for rolling average
 rollingLeft = deque(maxlen=20)
 rollingRight = deque(maxlen=20)
+plt.ion()
+fig = None  # plt.figure()
 
 
 def reliable_lane_markings(image, ipm_points, progress_display=False, ipm_size=200):
-    global line1
+    global fig
+    if progress_display and fig is None:
+        fig = plt.figure()
     """ Applies the reliable_lane_markings process
 
     :param image: The input image
@@ -44,13 +37,14 @@ def reliable_lane_markings(image, ipm_points, progress_display=False, ipm_size=2
     ])
 
     # Perspective transform
-    M = cv.getPerspectiveTransform(ipm_points, ipm_output)  # Get transform
-    perspective = cv.warpPerspective(image, M, (int(ipm_size * 1), int(ipm_size * 1)))  # Apply it
+    m = cv.getPerspectiveTransform(ipm_points, ipm_output)  # Get transform
+    perspective = cv.warpPerspective(image, m, (int(ipm_size * 1), int(ipm_size * 1)))  # Apply it
     perspective = cv.bilateralFilter(perspective, 11, 180, 120)
 
     # Get the lane lines
     gray_perspective = cv.cvtColor(perspective, cv.COLOR_BGR2HSV)[:, :, 2]
-    gray_perspective = cv.adaptiveThreshold(gray_perspective, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 9, -1)
+    gray_perspective = cv.adaptiveThreshold(gray_perspective, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C,
+                                            cv.THRESH_BINARY, 9, -1)
     gray_perspective = cv.dilate(gray_perspective, (7, 7))
     gray_perspective = cv.bilateralFilter(gray_perspective, 15, 100, 100)
 
@@ -65,11 +59,10 @@ def reliable_lane_markings(image, ipm_points, progress_display=False, ipm_size=2
         fig.clear()
         ax = fig.add_subplot(111)
         ax.plot(weights)
-        # plt.show()
         fig.canvas.draw()
-        # fig.canvas.flush_events()
+        fig.canvas.flush_events()
 
-        # Get the index of the peaks from the graph
+    # Get the index of the peaks from the graph
     peaks, _ = signal.find_peaks(weights)
 
     # Append the new average to the average
@@ -77,23 +70,23 @@ def reliable_lane_markings(image, ipm_points, progress_display=False, ipm_size=2
         rollingLeft.append(peaks[np.argmax(weights[peaks[peaks < ipm_size/2]])])
         rollingRight.append(peaks[np.argmax(weights[peaks[peaks > ipm_size/2]]) + len(peaks[peaks < ipm_size/2])])
 
-    maxLeft = int(np.average(rollingLeft))  # Get the new average
-    maxRight = int(np.average(rollingRight))
+    max_left = int(np.average(rollingLeft))  # Get the new average
+    max_right = int(np.average(rollingRight))
 
     # Draw the lines to show
-    cv.line(perspective, (maxLeft, 0), (maxLeft, int(ipm_size)), (255, 0, 0), 1)
-    cv.line(perspective, (maxRight, 0), (maxRight, int(ipm_size)), (255, 0, 0), 1)
+    cv.line(perspective, (max_left, 0), (max_left, int(ipm_size)), (255, 0, 0), 1)
+    cv.line(perspective, (max_right, 0), (max_right, int(ipm_size)), (255, 0, 0), 1)
 
     # # Inverse perspective transform
     # Make the mask to be inverted
     mask_perspective = np.zeros_like(perspective)
-    cv.rectangle(mask_perspective, (maxLeft, 0), (maxRight, int(ipm_size)), (0, 0, 255), -1)
-    cv.line(mask_perspective, (maxLeft, 0), (maxLeft, int(ipm_size)), (255, 0, 0), 5)
-    cv.line(mask_perspective, (maxRight, 0), (maxRight, int(ipm_size)), (255, 0, 0), 5)
+    cv.rectangle(mask_perspective, (max_left, 0), (max_right, int(ipm_size)), (0, 0, 255), -1)
+    cv.line(mask_perspective, (max_left, 0), (max_left, int(ipm_size)), (255, 0, 0), 5)
+    cv.line(mask_perspective, (max_right, 0), (max_right, int(ipm_size)), (255, 0, 0), 5)
 
     # Do the transform
-    M = cv.getPerspectiveTransform(ipm_output, ipm_points)
-    output_mask = cv.warpPerspective(mask_perspective, M, (image.shape[1], image.shape[0]))  # Apply it
+    m = cv.getPerspectiveTransform(ipm_output, ipm_points)
+    output_mask = cv.warpPerspective(mask_perspective, m, (image.shape[1], image.shape[0]))  # Apply it
     image = cv.addWeighted(image, 1, output_mask, 0.5, 0)
 
     if progress_display:
@@ -110,171 +103,68 @@ def reliable_lane_markings(image, ipm_points, progress_display=False, ipm_size=2
     return image
 
 
-def sdc_lane_detection(image, roi_clip, progress_display=False):
-    img_hsv = cv.cvtColor(image, cv.COLOR_RGB2HSV)
+# -----------------------------------------------------------------------------------------------------
+# START OF SDC LANE DETECTION
+def sdc_lane_detection(image, roi_rect, apply_roi=True, progress_display=False):
+    # Apply the mask to decrease processing later
+    if apply_roi:
+        mask_image = image[roi_rect[1]:roi_rect[3], roi_rect[0]:roi_rect[2], :]  # Stack is to make image 3 channel
+    else:
+        mask_image = image  # If no clip, just pass through the full image
+    # RGB Threshold
+    mask_rgb = cv.inRange(mask_image, (130, 130, 130), (180, 180, 180))
 
-    new_image = image.copy()
-    new_image = cv.GaussianBlur(new_image, (5, 5), 0)
-    mask_white = cv.inRange(image[:, :, :], (110, 110, 110), (180, 180, 180))
+    # HSV Threshold
+    mask_hsv = cv.cvtColor(mask_image, cv.COLOR_BGR2HSV)
+    mask_hsv = cv.inRange(mask_hsv, (80, 0, 140), (120, 20, 165))
+
+    # abs_sobel = np.abs(cv.Sobel(image_gray, cv.CV_64F, 1, 0))
+    # abs_sobel = np.abs(cv.Sobel(gray, cv.CV_64F, 0, 1))
+    # # Rescale back to 8 bit integer
+    # scaled_sobel = np.uint8(255*abs_sobel/np.max(abs_sobel))
+    # # Create a copy and apply the threshold
+    # binary_output = np.zeros_like(scaled_sobel)
+    # # Here I'm using inclusive (>=, <=) thresholds, but exclusive is ok too
+    # binary_output[(scaled_sobel >= thresh[0]) & (scaled_sobel <= thresh[1])] = 1
+
+    # Sobel filter
+    image_gray = cv.cvtColor(mask_image, cv.COLOR_BGR2GRAY)
+    image_gray = cv.equalizeHist(image_gray)
+    mask_sobelx = np.abs(cv.Sobel(image_gray, cv.CV_64F, 1, 0, ksize=5))
+    mask_sobely = np.abs(cv.Sobel(image_gray, cv.CV_64F, 0, 1, ksize=5))
+
+    # Rescale to 8 bit interger
+    mask_sobelx = np.uint8(255*mask_sobelx/np.max(mask_sobelx))
+    mask_sobely = np.uint8(255*mask_sobely/np.max(mask_sobely))
+
+    # Laplacian filter
+    mask_laplacian = cv.Laplacian(image_gray, cv.CV_32F)
+
+    # And the sobel and Laplacian
+    mask_edge_comb = cv.bitwise_or(mask_sobelx, mask_sobely)
+    # mask_edge_comb = cv.inRange(mask_edge_comb, 40, 255)
+    mask_edge_comb = cv.medianBlur(mask_edge_comb, 5)*2
+    mask_edge_comb = cv.bilateralFilter(mask_edge_comb, 5, 10, 100)
 
     # Clip to the ROI, as it will make some of the binary functions run faster
-    mask_white = mask_white & roi_clip
+    full_mask = mask_rgb | mask_hsv
 
-    # mask_white = cv.morphologyEx(mask_white, cv.MORPH_CLOSE, (3, 3))
-    mask_white = cv.medianBlur(mask_white, 5)
-
-    canny_edges = cv.Canny(mask_white, 50, 255)
-    # rho and theta are the distance and angular resolution of the grid in Hough space
-    # same values as quiz
-    rho = 2
-    theta = np.pi / 180
-    # threshold is minimum number of intersections in a grid for candidate line to go to output
-    threshold = 30
-    min_line_len = 60
-    max_line_gap = 180
-    # my hough values started closer to the values in the quiz, but got bumped up considerably for the challenge video
-
-    canny_edges = cv.cvtColor(canny_edges, cv.COLOR_GRAY2BGR)
-    # line_image = cv.hough(mask_white, rho, theta, threshold, min_line_len, max_line_gap, image)
-    # result = processes.weighted_img(canny_edges, image, α=0.8, β=1., λ=0.)
+    # mask_rgb = cv.morphologyEx(mask_rgb, cv.MORPH_CLOSE, (3, 3))
+    filtered_mask = cv.morphologyEx(full_mask, cv.MORPH_DILATE, (10, 5), iterations=1)
+    filtered_mask = cv.medianBlur(filtered_mask, 5)
 
     if progress_display:
-        pass
-
+        cv.imshow("SDC: mask_image", mask_image)
+        cv.imshow("SDC: mask_rgb", mask_rgb)
+        cv.imshow("SDC: mask_hsv", mask_hsv)
+        cv.imshow("SDC: mask_sobelx", mask_sobelx)
+        cv.imshow("SDC: mask_sobely", mask_sobely)
+        cv.imshow("SDC: mask_laplacian", mask_laplacian)
+        cv.imshow("SDC: mask_edge_comb", mask_edge_comb)
+        cv.imshow("SDC: full_mask", full_mask)
+        cv.imshow("SDC: filtered_mask", filtered_mask)
     return image
 
 
 def neural_lane(image, progress_display=False):
     return image
-
-
-class WorkerSignals(QObject):
-    '''
-    Defines the signals available from a running worker thread.
-
-    Supported signals are:
-
-    finished
-        No data
-
-    error
-        `tuple` (exctype, value, traceback.format_exc() )
-
-    result
-        `object` data returned from processing, anything
-
-    progress
-        `int` indicating % progress
-
-    '''
-    finished = pyqtSignal()
-    error = pyqtSignal(tuple)
-    result = pyqtSignal(object)
-    progress = pyqtSignal(int)
-
-
-class Worker(QRunnable):
-    '''
-    Worker thread
-
-    Inherits from QRunnable to handler worker thread setup, signals and wrap-up.
-
-    :param callback: The function callback to run on this worker thread. Supplied args and
-                     kwargs will be passed through to the runner.
-    :type callback: function
-    :param args: Arguments to pass to the callback function
-    :param kwargs: Keywords to pass to the callback function
-
-    '''
-
-    def __init__(self, fn, *args, **kwargs):
-        super(Worker, self).__init__()
-
-        # Store constructor arguments (re-used for processing)
-        self.fn = fn
-        self.args = args
-        self.kwargs = kwargs
-        self.signals = WorkerSignals()
-
-        # Add the callback to our kwargs
-        self.kwargs['progress_callback'] = self.signals.progress
-
-    @pyqtSlot()
-    def run(self):
-        '''
-        Initialise the runner function with passed args, kwargs.
-        '''
-
-        # Retrieve args/kwargs here; and fire processing using them
-        try:
-            result = self.fn(*self.args, **self.kwargs)
-        except:
-            traceback.print_exc()
-            exctype, value = sys.exc_info()[:2]
-            self.signals.error.emit((exctype, value, traceback.format_exc()))
-        else:
-            self.signals.result.emit(result)  # Return the result of the processing
-        finally:
-            self.signals.finished.emit()  # Done
-
-
-class MainWindow(QMainWindow):
-
-    def __init__(self, *args, **kwargs):
-        super(MainWindow, self).__init__(*args, **kwargs)
-
-        self.counter = 0
-
-        layout = QVBoxLayout()
-
-        self.l = QLabel("Start")
-        b = QPushButton("DANGER!")
-        b.pressed.connect(self.oh_no)
-
-        layout.addWidget(self.l)
-        layout.addWidget(b)
-
-        w = QWidget()
-        w.setLayout(layout)
-
-        self.setCentralWidget(w)
-
-        self.show()
-
-        self.threadpool = QThreadPool()
-        print("Multithreading with maximum %d threads" % self.threadpool.maxThreadCount())
-
-        self.timer = QTimer()
-        self.timer.setInterval(1000)
-        self.timer.timeout.connect(self.recurring_timer)
-        self.timer.start()
-
-    def progress_fn(self, n):
-        print("%d%% done" % n)
-
-    def execute_this_fn(self, progress_callback):
-        for n in range(0, 5):
-            time.sleep(1)
-            progress_callback.emit(n * 100 / 4)
-
-        return "Done."
-
-    def print_output(self, s):
-        print(s)
-
-    def thread_complete(self):
-        print("THREAD COMPLETE!")
-
-    def oh_no(self):
-        # Pass the function to execute
-        worker = Worker(self.execute_this_fn)  # Any other args, kwargs are passed to the run function
-        worker.signals.result.connect(self.print_output)
-        worker.signals.finished.connect(self.thread_complete)
-        worker.signals.progress.connect(self.progress_fn)
-
-        # Execute
-        self.threadpool.start(worker)
-
-    def recurring_timer(self):
-        self.counter += 1
-        self.l.setText("Counter: %d" % self.counter)
