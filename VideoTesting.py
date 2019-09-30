@@ -10,98 +10,111 @@ import os
 from copy import copy
 from BaseDetectionLib import loading
 
+# /---------- User configuration ----------\ ---------------------------------------------------------------------------
 # Define which folder the videos are in and which index to use
 path = Path("D:\Golf-cart-dataset\My Videos")
 number = 1
 
 # 0 = off, 1 = Only output, 2 = Show steps
-reliableLaneMarkings = 0
-SDCLane = 2
+reliableLaneMarkings = 1
+SDCLane = 1
 
+# CV View windows
+windowSize = [960, 640]  # The pixel size of each window
+# windowSize = [480, 320]  # The pixel size of each window
+grid = 4  # How many windows fit across a screen
+startX = 0
+titleOffset = 33
+
+# /---------- Process setup -------------\ -----------------------------------------------------------------------------
+# # Reliable lane markings
+# The x, y points for the IPM. Top left, top right, bottom right, bottom left
+ipm_points = np.float32([(384, 238), (501, 231), (740, 304), (200, 330)])
+
+# SDC Lane Detection
+roiRect = (200, 245, 800, 290)  # A rectangle to crop down to (x, y, x, y) top left, bottom right
+sizeMultiplier = 1.6  # Multiply the size of the tiny windows to fit on the screen
+top_bot_extend = (230, 380)
+
+# /---------- Variable setup ------------\ -----------------------------------------------------------------------------
+# # File
 files = [i for i in path.iterdir()]
 [print(f"{cnt}|\t{i}") for cnt, i in enumerate(files)]
 
 targetFile = files[number]
 print(f"\nLoading '{targetFile.parts[-1]}' at {targetFile}")
 
+# # Video stream
 cap = cv.VideoCapture(str(targetFile))  # Get the video capture stream
 progress = range(int(cap.get(cv.CAP_PROP_FRAME_COUNT)))
 
-# Pre-create windows
-windowList = []
+# # Pre-Create windows
+windowList = [["Combined", None]]  # Contains a list of window names
+
+# # Reliable Lane Markings
 if reliableLaneMarkings:
-    windowList.append("Reliable: Output")
+    windowList.append(["Reliable: Output", None])
 if reliableLaneMarkings == 2:
-    [windowList.append(i) for i in ["Reliable: Perspective", "Reliable: PerspecGray", "Reliable: PerspThresh",
-                                    "Reliable: PerspecMask", "Reliable:  outputMask"]]
+    [windowList.append(i) for i in [["Reliable: Perspective", None],
+                                    ["Reliable: PerspecGray", None],
+                                    ["Reliable: PerspThresh", None],
+                                    ["Reliable: PerspecMask", None],
+                                    ["Reliable:  outputMask", None]
+                                    ]]
 
+# # SDC Lane Detection
+# Window size for the cropped ones
+sdc_size = (int(sizeMultiplier * (roiRect[2] - roiRect[0])), int(sizeMultiplier * (roiRect[3] - roiRect[1])))
 if SDCLane:
-    windowList.append("SDC: Output")
+    windowList.append(["SDC: Output", None])
 if SDCLane == 2:
-    [windowList.append(i) for i in ["SDC: mask_image", "SDC: mask_rgb", "SDC: mask_hsv",
-                                    "SDC: mask_sobelx", "SDC: mask_sobely", "SDC: mask_laplacian",
-                                    "SDC: mask_edge_comb",
-                                    "SDC: full_mask",  "SDC: filtered_mask"]]
+    [windowList.append(i) for i in [["SDC: mask_image", sdc_size],
+                                    ["SDC: mask_rgb", sdc_size],
+                                    ["SDC: mask_hsv", sdc_size],
+                                    ["SDC: mask_sobel_x", sdc_size],
+                                    ["SDC: mask_sobel_y", sdc_size],
+                                    ["SDC: full_mask", sdc_size],
+                                    ["SDC: filtered_mask", sdc_size],
+                                    ["SDC: hough_lines", sdc_size]
+                                    ]]
 
-windowSize = [480, 320]  # The size of each window
-grid = 4  # How many windows fit across a screen
-startX = 0
-titleOffset = 33
+# # Create windows
 for cnt, i in enumerate(windowList):
-    cv.namedWindow(i, cv.WINDOW_GUI_EXPANDED)  # Build a named window which can be resized
-    cv.resizeWindow(i, windowSize[0], windowSize[1])
-    cv.moveWindow(i, (windowSize[0]*int(cnt%grid))+startX, ((windowSize[1]+titleOffset)*int(cnt/grid)))
+    cv.namedWindow(i[0], cv.WINDOW_GUI_EXPANDED)  # Build a named window which can be resized
+    if i[1] is None:
+        cv.resizeWindow(i[0], windowSize[0], windowSize[1])
+    else:
+        cv.resizeWindow(i[0], i[1][0], i[1][1])
+    cv.moveWindow(i[0], (windowSize[0] * int(cnt % grid)) + startX, (windowSize[1] + titleOffset) * int(cnt / grid))
 
+# # Frame processing loop
 for i in tqdm(progress):
-    ret, frame = cap.read()
-    frame = cv.resize(frame, (960, 540))
+    ret, frame = cap.read()  # Get frame
+    frame = cv.resize(frame, (960, 540))  # Scale the frame to fixed size so variable resolution input is possible
+
+    passthrough = frame.copy()
 
     # # Reliable lane markings
-    ipm_points = np.float32([(384, 238), (501, 231), (740, 304), (200, 330)])
     if reliableLaneMarkings == 2:
-        cv.imshow("Reliable: Output", loading.reliable_lane_markings(frame.copy(), ipm_points, progress_display=True))
+        tmp, passthrough = loading.reliable_lane_markings(frame.copy(), ipm_points,
+                                                          passthrough_image=passthrough, progress_display=True)
+        cv.imshow("Reliable: Output", tmp)
     elif reliableLaneMarkings:
-        cv.imshow("Reliable: Output", loading.reliable_lane_markings(frame.copy(), ipm_points, progress_display=False))
+        tmp, passthrough = loading.reliable_lane_markings(frame.copy(), ipm_points,
+                                                          passthrough_image=passthrough, progress_display=False)
+        cv.imshow("Reliable: Output", tmp)
 
     # SDC Lane detection
-    roiRect = (280, 160, 680, 220)  # A rectangle to crop down to (x, y, x, y) top left, bottom right
     if SDCLane == 2:
-        cv.imshow("SDC: Output", loading.sdc_lane_detection(frame.copy(), roiRect, apply_roi=True, progress_display=True))
+        tmp, passthrough = loading.sdc_lane_detection(frame.copy(), roiRect, top_bot_extend,
+                                                      apply_roi=True, passthrough_image=passthrough, progress_display=True)
+        cv.imshow("SDC: Output", tmp)
     elif SDCLane:
-        cv.imshow("SDC: Output", loading.sdc_lane_detection(frame.copy(), roiRect, apply_roi=True, progress_display=False))
+        tmp, passthrough = loading.sdc_lane_detection(frame.copy(), roiRect, top_bot_extend,
+                                                      apply_roi=True, passthrough_image=passthrough, progress_display=False)
+        cv.imshow("SDC: Output", tmp)
 
-    # Neural network
-    # loading.neural_lane(frame.copy())
-
-    # # The initial attempt at processing
-    # img_hsv = cv.cvtColor(frame, cv.COLOR_RGB2HSV)
-    #
-    # new_frame = frame.copy()
-    # new_frame = cv.GaussianBlur(new_frame, (5, 5), 0)
-    # mask_white = cv.inRange(frame[:, :, :], (110, 110, 110), (180, 180, 180))
-    #
-    # # Clip to the ROI, as it will make some of the binary functions run faster
-    # mask_white = mask_white & roi_clip
-    #
-    # # mask_white = cv.morphologyEx(mask_white, cv.MORPH_CLOSE, (3, 3))
-    # mask_white = cv.medianBlur(mask_white, 5)
-    #
-    # canny_edges = cv.Canny(mask_white, 50, 255)
-    # # rho and theta are the distance and angular resolution of the grid in Hough space
-    # # same values as quiz
-    # rho = 2
-    # theta = np.pi / 180
-    # # threshold is minimum number of intersections in a grid for candidate line to go to output
-    # threshold = 30
-    # min_line_len = 60
-    # max_line_gap = 180
-    # # my hough values started closer to the values in the quiz, but got bumped up considerably for the challenge video
-    #
-    # canny_edges = cv.cvtColor(canny_edges, cv.COLOR_GRAY2BGR)
-    # line_image = processes.hough_lines(mask_white, rho, theta, threshold, min_line_len, max_line_gap, frame)
-    # # result = processes.weighted_img(canny_edges, frame, α=0.8, β=1., λ=0.)
-
-    # cv.imshow('t', canny_edges)
+    cv.imshow("Combined", passthrough)
 
     if cv.waitKey(1) == 27:
         break
